@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private Rigidbody2D _rb;
     public float speed = 2f;
     public Transform[] moveTargets;
     public Transform point1;
@@ -24,11 +25,11 @@ public class Enemy : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //_rb.position = new Vector3(point1.position);
 
-      
-         
-            if (CanGo)
-                transform.position = Vector3.MoveTowards(transform.position, point1.position, speed * Time.deltaTime);
+
+        if (CanGo)
+             transform.position = Vector3.MoveTowards(transform.position, point1.position, speed * Time.deltaTime);
             if (transform.position == point1.position)
             {
                 //Transform t = point1;
