@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
   [SerializeField]  private FloatingJoystick joystick;
     private void Awake()
     {
+        Scores.LifePlayer = 3;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -37,6 +38,13 @@ public class Player : MonoBehaviour
         if(  joystick.Horizontal < 0)
         {
             transform.rotation = Quaternion.Euler(0,-180, 0);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "enemy")
+        {
+            Scores.LifePlayer--;
         }
     }
 }
